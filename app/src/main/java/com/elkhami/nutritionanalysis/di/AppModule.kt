@@ -9,7 +9,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
 
 /**
@@ -17,7 +16,7 @@ import javax.inject.Singleton
  */
 @Module
 @InstallIn(SingletonComponent::class)
-class AppModule {
+object AppModule {
 
     @Singleton
     @Provides
@@ -26,15 +25,15 @@ class AppModule {
         .addInterceptor(
             HttpLoggingInterceptor()
                 .setLevel(HttpLoggingInterceptor.Level.BODY)
-        )
+        ).build()
 
     @Singleton
     @Provides
-    fun provideNutritionAnalysisAPI(okHttpClient: OkHttpClient.Builder) =
+    fun provideNutritionAnalysisAPI(okHttpClient: OkHttpClient) =
         Retrofit
             .Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient.build())
+            .client(okHttpClient)
             .build()
             .create(NutritionAnalysisAPI::class.java)
 

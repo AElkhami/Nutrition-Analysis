@@ -1,6 +1,8 @@
 package com.elkhami.nutritionanalysis.di
 
 import com.elkhami.nutritionanalysis.data.remote.NutritionAnalysisAPI
+import com.elkhami.nutritionanalysis.data.repository.NutritionAnalysisRepository
+import com.elkhami.nutritionanalysis.data.repository.Repository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,5 +38,10 @@ object AppModule {
             .client(okHttpClient)
             .build()
             .create(NutritionAnalysisAPI::class.java)
+
+    @Singleton
+    @Provides
+    fun provideNutritionAnalysisRepository(api: NutritionAnalysisAPI) =
+        NutritionAnalysisRepository(api) as Repository
 
 }

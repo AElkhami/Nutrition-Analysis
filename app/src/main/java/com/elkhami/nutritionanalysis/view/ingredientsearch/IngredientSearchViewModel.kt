@@ -1,31 +1,32 @@
 package com.elkhami.nutritionanalysis.view.ingredientsearch
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 /**
  * Created by A.Elkhami on 28,September,2021
  */
-class IngredientSearchViewModel: ViewModel() {
+class IngredientSearchViewModel : ViewModel() {
 
-    private var _areIngredientsInputValid: Boolean = false
+    private var _areIngredientsInputValid = MutableLiveData<Boolean>()
 
-    val areIngredientsInputValid: Boolean
-    get() = _areIngredientsInputValid
+    val areIngredientsInputValid: LiveData<Boolean> = _areIngredientsInputValid
 
-    private lateinit var _ingredientsList: List<String>
+    private var _ingredientsList = MutableLiveData<List<String>>()
 
-    val ingredientsList: List<String>
-    get() = _ingredientsList
+    val ingredientsList: LiveData<List<String>> = _ingredientsList
 
-    fun validateIngredientsInput(ingredients: String){
-
+    fun validateIngredientsInput(ingredients: String) {
+        _areIngredientsInputValid.value = ingredients.isNotBlank()
     }
 
-    fun convertIngredientsInputToList(ingredients: String){
+    fun convertIngredientsInputToList(ingredients: String) {
 
+        val ingredientList = ingredients.split("\n")
+
+        _ingredientsList.value = ingredientList
     }
-
-
 
 
 }

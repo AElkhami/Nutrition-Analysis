@@ -52,7 +52,8 @@ class TestRepository : Repository {
         }
     }
 
-    override suspend fun processAllNutritionRequests(ingrs: List<String>): Flow<Pair<String, Resource<NutritionalFactsResponse>>> {
+    override suspend fun processAllNutritionRequests(ingrs: List<String>)
+            : Flow<Pair<String, Resource<NutritionalFactsResponse>>> {
         TODO("Not yet implemented")
     }
 

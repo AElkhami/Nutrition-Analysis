@@ -31,7 +31,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideNutritionAnalysisAPI(okHttpClient: OkHttpClient) =
+    fun provideNutritionAnalysisAPI(okHttpClient: OkHttpClient): NutritionAnalysisAPI =
         Retrofit
             .Builder()
             .addConverterFactory(GsonConverterFactory.create())

@@ -44,5 +44,13 @@ class IngredientSearchViewModelTest {
 
     }
 
+    @Test
+    fun `check that _ingredientsList variable is null after navigation is done, return true`(){
+
+         viewModel.navigationComplete()
+
+        assertThat(viewModel.ingredientsList.value).isEqualTo(null)
+    }
+
 
 }

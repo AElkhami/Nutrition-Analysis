@@ -18,6 +18,10 @@ class TestRepository : Repository {
     private var isResponseSuccessful = false
 
     private val nutritionalFactsMock = NutritionalFactsResponse(
+        "carrot",
+        "50",
+        "g",
+        "1",
         0,
         TotalNutrients(
             CA("", 0.0, ""),

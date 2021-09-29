@@ -3,7 +3,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data />
+    <data>
+        <variable
+            name="viewModel"
+            type="com.elkhami.nutritionanalysis.view.ingredientsearch.IngredientSearchViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -37,6 +41,7 @@
             android:inputType="textMultiLine"
             android:padding="@dimen/ingredient_edit_text_padding"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
+            android:onTextChanged="@{(text, start, before, count) -> viewModel.validateIngredientsInput(text)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ingredientTextLabel" />
@@ -55,8 +60,11 @@
             android:layout_marginStart="@dimen/medium_margin"
             android:layout_marginTop="@dimen/large_margin"
             android:layout_marginEnd="@dimen/medium_margin"
+            android:onClick="@{()->viewModel.convertIngredientsInputToList(ingredientsEditText.getText().toString())}"
             android:padding="@dimen/normal_button_padding"
             android:text="@string/analyse"
+            android:enabled="false"
+            android:clickable="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ingredientsEditText" />

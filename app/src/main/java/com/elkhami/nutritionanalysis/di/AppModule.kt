@@ -1,5 +1,6 @@
 package com.elkhami.nutritionanalysis.di
 
+import com.elkhami.nutritionanalysis.BuildConfig
 import com.elkhami.nutritionanalysis.data.remote.NutritionAnalysisAPI
 import com.elkhami.nutritionanalysis.data.repository.NutritionAnalysisRepository
 import com.elkhami.nutritionanalysis.data.repository.Repository
@@ -35,6 +36,7 @@ object AppModule {
         Retrofit
             .Builder()
             .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .build()
             .create(NutritionAnalysisAPI::class.java)

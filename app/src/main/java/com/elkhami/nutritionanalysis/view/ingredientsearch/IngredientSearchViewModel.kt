@@ -17,7 +17,7 @@ class IngredientSearchViewModel : ViewModel() {
 
     val ingredientsList: LiveData<List<String>> = _ingredientsList
 
-    fun validateIngredientsInput(ingredients: String) {
+    fun validateIngredientsInput(ingredients: CharSequence) {
         _areIngredientsInputValid.value = ingredients.isNotBlank()
     }
 

@@ -17,6 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class IngredientSearchFragment: Fragment() {
 
+    private lateinit var binding: FragmentIngredientSearchBinding
     private val viewModel: IngredientSearchViewModel by viewModels()
 
     override fun onCreateView(
@@ -24,17 +25,25 @@ class IngredientSearchFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding: FragmentIngredientSearchBinding =
+        binding =
             DataBindingUtil.inflate(
                 inflater,
                 R.layout.fragment_ingredient_search,
                 container,
                 false
             )
+        binding.viewModel = viewModel
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.lifecycleOwner = this
+
+        viewModel.areIngredientsInputValid.observe(viewLifecycleOwner, {
+            binding.analyseButton.isEnabled = it
+            binding.analyseButton.isClickable = it
+        })
     }
 }

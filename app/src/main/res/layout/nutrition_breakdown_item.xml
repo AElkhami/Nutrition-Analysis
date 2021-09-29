@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="nutritionalFacts"
+            type="com.elkhami.nutritionanalysis.data.model.NutritionalFactsResponse" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/nutrition_breakdown_item_padding"
+        android:background="@drawable/rounded_corners_white_10dp_bg">
+
+        <TextView
+            android:id="@+id/foodNameLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:text="@string/name_item_label"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/foodNameText"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_to_text_margin"
+            android:text="@{nutritionalFacts.foodName}"
+            app:layout_constraintBottom_toBottomOf="@+id/foodNameLabel"
+            app:layout_constraintStart_toEndOf="@+id/foodNameLabel"
+            app:layout_constraintTop_toTopOf="@+id/foodNameLabel"
+            tools:text="Carrot" />
+
+        <TextView
+            android:id="@+id/weightLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:text="@string/weight_item_label"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/quantityLabel"
+            app:layout_constraintStart_toEndOf="@+id/quantityText"
+            app:layout_constraintTop_toTopOf="@+id/quantityLabel" />
+
+        <TextView
+            android:id="@+id/weightText"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_to_text_margin"
+            android:layout_marginEnd="@dimen/medium_margin"
+            android:text="@{nutritionalFacts.weight}"
+            app:layout_constraintBottom_toBottomOf="@+id/weightLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/weightLabel"
+            app:layout_constraintTop_toTopOf="@+id/weightLabel"
+            tools:text="70" />
+
+
+        <TextView
+            android:id="@+id/unitLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:text="@string/unit_item_label"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/caloriesText"
+            app:layout_constraintStart_toEndOf="@+id/caloriesText"
+            app:layout_constraintTop_toTopOf="@+id/caloriesText" />
+
+        <TextView
+            android:id="@+id/unitText"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_to_text_margin"
+            android:layout_marginEnd="@dimen/medium_margin"
+            android:text="@{nutritionalFacts.unit}"
+            app:layout_constraintBottom_toBottomOf="@+id/unitLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/unitLabel"
+            app:layout_constraintTop_toTopOf="@+id/unitLabel"
+            tools:text="G" />
+
+        <TextView
+            android:id="@+id/caloriesLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:text="@string/calories_item_label"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/foodNameText"
+            app:layout_constraintStart_toEndOf="@+id/foodNameText"
+            app:layout_constraintTop_toTopOf="@+id/foodNameText" />
+
+        <TextView
+            android:id="@+id/caloriesText"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_to_text_margin"
+            android:text="@{nutritionalFacts.calories}"
+            app:layout_constraintBottom_toBottomOf="@+id/caloriesLabel"
+            app:layout_constraintStart_toEndOf="@+id/caloriesLabel"
+            app:layout_constraintTop_toTopOf="@+id/caloriesLabel"
+            tools:text="25" />
+
+        <TextView
+            android:id="@+id/quantityLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:text="@string/quantity_item_label"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/foodNameLabel" />
+
+        <TextView
+            android:id="@+id/quantityText"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_to_text_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/quantityLabel"
+            app:layout_constraintStart_toEndOf="@+id/quantityLabel"
+            app:layout_constraintTop_toTopOf="@+id/quantityLabel"
+            tools:text="1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -3,4 +3,10 @@
     <string name="analyse">Analyse</string>
     <string name="ingredientHint">e.g. Carrot 50 g</string>
     <string name="enter_your_ingredients">Enter your ingredients:</string>
+    <string name="name_item_label">Name:</string>
+    <string name="weight_item_label">Weight:</string>
+    <string name="unit_item_label">Unit:</string>
+    <string name="calories_item_label">Calories:</string>
+    <string name="quantity_item_label">Quantity:</string>
+    <string name="total_nutrition_facts">Total nutrition facts</string>
 </resources>

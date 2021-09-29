@@ -9,5 +9,19 @@
         android:id="@+id/ingredientSearchFragment"
         android:name="com.elkhami.nutritionanalysis.view.ingredientsearch.IngredientSearchFragment"
         android:label="IngredientSearchFragment"
-        tools:layout="@layout/fragment_ingredient_search"/>
+        tools:layout="@layout/fragment_ingredient_search">
+        <action
+            android:id="@+id/action_ingredientSearchFragment_to_nutritionBreakdownFragment"
+            app:destination="@id/nutritionBreakdownFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nutritionBreakdownFragment"
+        android:name="com.elkhami.nutritionanalysis.view.nutritionsbreakdown.NutritionBreakdownFragment"
+        android:label="NutritionBreakdownFragment"
+        tools:layout="@layout/fragment_nutrition_breakdown">
+        <argument
+            android:name="ingredientList"
+            app:argType="string[]"
+            />
+    </fragment>
 </navigation>

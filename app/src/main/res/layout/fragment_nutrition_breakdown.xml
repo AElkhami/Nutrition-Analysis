@@ -8,6 +8,10 @@
         <variable
             name="viewModel"
             type="com.elkhami.nutritionanalysis.view.nutritionsbreakdown.NutritionBreakdownViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.elkhami.nutritionanalysis.view.nutritionsbreakdown.NutritionBreakdownAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,13 +24,16 @@
             android:layout_width="@dimen/match_constraint"
             android:layout_height="@dimen/match_constraint"
             android:layout_marginBottom="@dimen/medium_margin"
+            android:adapter="@{adapter}"
+            android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/analyseButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="5"
-            tools:listitem="@layout/nutrition_breakdown_item" />
+            tools:listitem="@layout/nutrition_breakdown_item"
+            tools:visibility="visible" />
 
         <Button
             android:id="@+id/analyseButton"
@@ -38,9 +45,11 @@
             android:padding="@dimen/normal_button_padding"
             android:text="@string/total_nutrition_facts"
             android:textAllCaps="false"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="visible" />
 
         <ProgressBar
             android:id="@+id/loadingProgressBar"

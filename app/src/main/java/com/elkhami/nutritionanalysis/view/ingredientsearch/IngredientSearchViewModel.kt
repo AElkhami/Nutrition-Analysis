@@ -28,9 +28,8 @@ class IngredientSearchViewModel : ViewModel() {
         _ingredientsList.value = ingredientList
     }
 
-    fun navigationComplete(){
+    fun navigationComplete() {
         _ingredientsList.value = null
     }
-
 
 }

@@ -9,4 +9,5 @@
     <string name="calories_item_label">Calories:</string>
     <string name="quantity_item_label">Quantity:</string>
     <string name="total_nutrition_facts">Total nutrition facts</string>
+    <string name="one_digit">1</string>
 </resources>

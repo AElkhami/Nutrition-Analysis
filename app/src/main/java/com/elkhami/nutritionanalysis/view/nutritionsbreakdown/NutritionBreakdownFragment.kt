@@ -42,6 +42,39 @@ class NutritionBreakdownFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        args.ingredientList?.toList()
+        val ingredientList = args.ingredientList?.toList() ?: listOf()
+
+        viewModel.getNutritionalDataForIngredients(ingredientList)
+
+        viewModel.nutritionBreakdownList.observe(viewLifecycleOwner, {
+            val adapter = NutritionBreakdownAdapter()
+            adapter.submitList(it)
+            binding.adapter = adapter
+        })
+
+        viewModel.errorMessageType.observe(viewLifecycleOwner, {
+            println(it)
+        })
+
+        viewModel.loadingState.observe(viewLifecycleOwner, { isLoading ->
+            if (isLoading) {
+                startLoading()
+            } else {
+                stopLoading()
+            }
+        })
+
+    }
+
+    private fun startLoading() {
+        binding.analyseButton.visibility = View.GONE
+        binding.nutritionRecyclerView.visibility = View.GONE
+        binding.loadingProgressBar.visibility = View.VISIBLE
+    }
+
+    private fun stopLoading() {
+        binding.analyseButton.visibility = View.VISIBLE
+        binding.nutritionRecyclerView.visibility = View.VISIBLE
+        binding.loadingProgressBar.visibility = View.GONE
     }
 }

@@ -2,52 +2,31 @@ package com.elkhami.nutritionanalysis.data.repository
 
 import com.elkhami.nutritionanalysis.data.model.IngredientsRequest
 import com.elkhami.nutritionanalysis.data.model.NutritionalFactsResponse
-import com.elkhami.nutritionanalysis.data.model.TotalNutrients
-import com.elkhami.nutritionanalysis.data.model.nutrition.*
+import com.elkhami.nutritionanalysis.data.stub.NutritionFactsStub
 import com.elkhami.nutritionanalysis.other.Constants.NETWORK_ERROR
 import com.elkhami.nutritionanalysis.other.Constants.UNKNOWN_ERROR
 import com.elkhami.nutritionanalysis.other.Resource
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 /**
  * Created by A.Elkhami on 27,September,2021
  */
+private const val WAIT_TIME = 2000L
+
 class TestRepository : Repository {
 
     private var shouldReturnNetworkError = false
     private var isResponseSuccessful = false
 
-    private val nutritionalFactsMock = NutritionalFactsResponse(
-        "carrot",
-        "50",
-        "g",
-        "1",
-        0,
-        TotalNutrients(
-            CA("", 0.0, ""),
-            CHOCDF("", 0.0, ""),
-            CHOLE("", 0.0, ""),
-            ENERCKCAL("", 0.0, ""),
-            FAT("", 0.0, ""),
-            FE("", 0.0, ""),
-            K("", 0.0, ""),
-            NA("", 0.0, ""),
-            PROCNT("", 0.0, ""),
-            VITARAE("", 0.0, ""),
-            VITB12("", 0.0, ""),
-            VITB6A("", 0.0, ""),
-            VITC("", 0.0, "")
-        ),
-        0,
-        0
-    )
-
+    private val stub = NutritionFactsStub
 
     override suspend fun getNutritionForItem(ingr: String)
             : Resource<NutritionalFactsResponse> {
         return if (shouldReturnNetworkError) {
             if (isResponseSuccessful) {
-                Resource.Success(nutritionalFactsMock)
+                Resource.Success(stub.nutritionalFactsStub)
             } else {
                 Resource.Fail(errorMessage = UNKNOWN_ERROR)
             }
@@ -57,8 +36,21 @@ class TestRepository : Repository {
     }
 
     override suspend fun processAllNutritionRequests(ingrs: List<String>)
-            : Flow<Pair<String, Resource<NutritionalFactsResponse>>> {
-        TODO("Not yet implemented")
+            : Flow<Resource<NutritionalFactsResponse>> {
+        return flow{
+
+            val ingredientDetails = processIngredientDetails(ingrs[0])
+
+            stub.nutritionalFactsStub.foodName = ingredientDetails.first
+            stub.nutritionalFactsStub.weight = ingredientDetails.second.toString()
+            stub.nutritionalFactsStub.unit = ingredientDetails.third
+
+            emit(Resource.Success(stub.nutritionalFactsStub))
+        }
+    }
+
+    override fun processIngredientDetails(ingr: String): Triple<String, Int, String> {
+        return Triple("carrot", 50, "g")
     }
 
 
@@ -66,7 +58,7 @@ class TestRepository : Repository {
             : Resource<NutritionalFactsResponse> {
         return if (shouldReturnNetworkError) {
             if (isResponseSuccessful) {
-                Resource.Success(nutritionalFactsMock)
+                Resource.Success(stub.nutritionalFactsStub)
             } else {
                 Resource.Fail(errorMessage = UNKNOWN_ERROR)
             }

@@ -13,7 +13,9 @@ interface Repository {
             : Resource<NutritionalFactsResponse>
 
     suspend fun processAllNutritionRequests(ingrs: List<String>)
-            : Flow<Pair<String, Resource<NutritionalFactsResponse>>>
+            : Flow<Resource<NutritionalFactsResponse>>
+
+    fun processIngredientDetails(ingr: String): Triple<String, Int, String>
 
     suspend fun getNutritionForList(request: IngredientsRequest)
             : Resource<NutritionalFactsResponse>

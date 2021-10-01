@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_to_text_margin"
             android:layout_marginEnd="@dimen/medium_margin"
-            android:text="@{nutritionalFacts.weight}"
+            android:text="@{String.valueOf(nutritionalFacts.totalWeight)}"
             app:layout_constraintBottom_toBottomOf="@+id/weightLabel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/weightLabel"
@@ -106,7 +106,7 @@
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_to_text_margin"
-            android:text="@{nutritionalFacts.calories}"
+            android:text="@{String.valueOf(nutritionalFacts.calories)}"
             app:layout_constraintBottom_toBottomOf="@+id/caloriesLabel"
             app:layout_constraintStart_toEndOf="@+id/caloriesLabel"
             app:layout_constraintTop_toTopOf="@+id/caloriesLabel"
@@ -131,10 +131,10 @@
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_to_text_margin"
+            android:text="@string/one_digit"
             app:layout_constraintBottom_toBottomOf="@+id/quantityLabel"
             app:layout_constraintStart_toEndOf="@+id/quantityLabel"
-            app:layout_constraintTop_toTopOf="@+id/quantityLabel"
-            tools:text="1" />
+            app:layout_constraintTop_toTopOf="@+id/quantityLabel" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

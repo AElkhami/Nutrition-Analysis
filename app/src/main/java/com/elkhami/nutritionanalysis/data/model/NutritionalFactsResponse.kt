@@ -1,12 +1,12 @@
 package com.elkhami.nutritionanalysis.data.model
 
 data class NutritionalFactsResponse(
-    val foodName: String,
-    val weight: String,
-    val unit: String,
+    var foodName: String,
+    var weight: String,
+    var unit: String,
     val uri: String,
     val calories: Int,
     val totalNutrients: TotalNutrients,
-    val totalWeight: Int,
+    var totalWeight: Int,
     val yield: Int
 )

@@ -19,7 +19,6 @@ class NutritionBreakdownAdapter :
 
         fun bind(item: NutritionalFactsResponse) {
             binding.nutritionalFacts = item
-            binding.executePendingBindings()
         }
 
         companion object {

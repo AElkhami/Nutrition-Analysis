@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.elkhami.nutritionanalysis.R

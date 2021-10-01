@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.elkhami.nutritionanalysis">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".application.NutritionAnalysisApp"
         android:allowBackup="false"

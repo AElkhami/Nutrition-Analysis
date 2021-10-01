@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.elkhami.nutritionanalysis.R
 import com.elkhami.nutritionanalysis.databinding.FragmentNutritionBreakdownBinding
+import com.elkhami.nutritionanalysis.other.Constants.NETWORK_ERROR
+import com.elkhami.nutritionanalysis.other.Constants.UNKNOWN_ERROR
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -53,7 +56,19 @@ class NutritionBreakdownFragment : Fragment() {
         })
 
         viewModel.errorMessageType.observe(viewLifecycleOwner, {
-            println(it)
+
+            val errorString = when (it) {
+                UNKNOWN_ERROR -> {
+                    getString(R.string.unknown_error_message)
+                }
+                NETWORK_ERROR -> {
+                    getString(R.string.network_error_message)
+                }
+                else -> {
+                    it
+                }
+            }
+            Toast.makeText(requireContext(), errorString, Toast.LENGTH_LONG).show()
         })
 
         viewModel.loadingState.observe(viewLifecycleOwner, { isLoading ->

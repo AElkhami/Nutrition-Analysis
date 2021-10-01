@@ -10,4 +10,6 @@
     <string name="quantity_item_label">Quantity:</string>
     <string name="total_nutrition_facts">Total nutrition facts</string>
     <string name="one_digit">1</string>
+    <string name="unknown_error_message">Something went wrong please try again later.</string>
+    <string name="network_error_message">Couldn\'t reach server please check your internet.</string>
 </resources>

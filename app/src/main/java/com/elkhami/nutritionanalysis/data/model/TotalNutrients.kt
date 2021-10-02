@@ -15,5 +15,8 @@ data class TotalNutrients(
     val VITA_RAE: VITARAE,
     val VITB12: VITB12,
     val VITB6A: VITB6A,
-    val VITC: VITC
+    val VITC: VITC,
+    val VITD: VITD,
+    val TOCPHA: TOCPHA,
+    val VITK1: VITK1
 )

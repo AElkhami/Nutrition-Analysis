@@ -1,30 +1,30 @@
-package com.elkhami.nutritionanalysis.view.nutritionsbreakdown
+package com.elkhami.nutritionanalysis.view.totalnutritionfacts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.elkhami.nutritionanalysis.data.model.NutritionalFactsResponse
-import com.elkhami.nutritionanalysis.databinding.NutritionBreakdownItemBinding
+import com.elkhami.nutritionanalysis.data.model.Nutrient
+import com.elkhami.nutritionanalysis.databinding.TotalNutritionFactsItemBinding
 
 /**
- * Created by A.Elkhami on 29,September,2021
+ * Created by A.Elkhami on 02,October,2021
  */
-class NutritionBreakdownAdapter :
-    ListAdapter<NutritionalFactsResponse, NutritionBreakdownAdapter.ViewHolder>(DiffCallback()) {
+class TotalNutritionFactsAdapter :
+    ListAdapter<Nutrient, TotalNutritionFactsAdapter.ViewHolder>(DiffCallback()) {
 
-    class ViewHolder private constructor(private val binding: NutritionBreakdownItemBinding) :
+    class ViewHolder private constructor(private val binding: TotalNutritionFactsItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: NutritionalFactsResponse) {
-            binding.nutritionalFacts = item
+        fun bind(item: Nutrient) {
+            binding.nutrient = item
         }
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = NutritionBreakdownItemBinding.inflate(
+                val binding = TotalNutritionFactsItemBinding.inflate(
                     layoutInflater, parent, false
                 )
                 return ViewHolder(binding)
@@ -42,19 +42,19 @@ class NutritionBreakdownAdapter :
     }
 }
 
-class DiffCallback : DiffUtil.ItemCallback<NutritionalFactsResponse>() {
+class DiffCallback : DiffUtil.ItemCallback<Nutrient>() {
 
     override fun areItemsTheSame(
-        oldItem: NutritionalFactsResponse,
-        newItem: NutritionalFactsResponse
+        oldItem: Nutrient,
+        newItem: Nutrient
     ): Boolean {
-        return oldItem.uri == newItem.uri
+        return oldItem.label == newItem.label
     }
 
 
     override fun areContentsTheSame(
-        oldItem: NutritionalFactsResponse,
-        newItem: NutritionalFactsResponse
+        oldItem: Nutrient,
+        newItem: Nutrient
     ): Boolean {
         return oldItem == newItem
     }

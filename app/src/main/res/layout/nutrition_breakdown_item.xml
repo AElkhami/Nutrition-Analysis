@@ -13,8 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/nutrition_breakdown_item_padding"
-        android:background="@drawable/rounded_corners_white_10dp_bg">
+        android:background="@drawable/rounded_corners_white_10dp_bg"
+        tools:layout_margin="@dimen/recycler_item_margin">
 
         <TextView
             android:id="@+id/foodNameLabel"
@@ -43,23 +43,22 @@
             android:id="@+id/weightLabel"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_marginStart="16dp"
             android:text="@string/weight_item_label"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/quantityLabel"
-            app:layout_constraintStart_toEndOf="@+id/quantityText"
-            app:layout_constraintTop_toTopOf="@+id/quantityLabel" />
+            app:layout_constraintBottom_toBottomOf="@+id/foodNameText"
+            app:layout_constraintStart_toEndOf="@+id/foodNameText"
+            app:layout_constraintTop_toTopOf="@+id/foodNameText"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/weightText"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_to_text_margin"
-            android:layout_marginEnd="@dimen/medium_margin"
             android:text="@{String.valueOf(nutritionalFacts.totalWeight)}"
             app:layout_constraintBottom_toBottomOf="@+id/weightLabel"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/weightLabel"
             app:layout_constraintTop_toTopOf="@+id/weightLabel"
             tools:text="70" />
@@ -68,13 +67,13 @@
             android:id="@+id/unitLabel"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_marginStart="16dp"
             android:text="@string/unit_item_label"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/caloriesText"
-            app:layout_constraintStart_toEndOf="@+id/caloriesText"
-            app:layout_constraintTop_toTopOf="@+id/caloriesText" />
+            app:layout_constraintBottom_toBottomOf="@+id/weightText"
+            app:layout_constraintStart_toEndOf="@+id/weightText"
+            app:layout_constraintTop_toTopOf="@+id/weightText" />
 
         <TextView
             android:id="@+id/unitText"
@@ -93,13 +92,13 @@
             android:id="@+id/caloriesLabel"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_marginStart="16dp"
             android:text="@string/calories_item_label"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/foodNameText"
-            app:layout_constraintStart_toEndOf="@+id/foodNameText"
-            app:layout_constraintTop_toTopOf="@+id/foodNameText" />
+            app:layout_constraintBottom_toBottomOf="@+id/quantityText"
+            app:layout_constraintStart_toEndOf="@+id/quantityText"
+            app:layout_constraintTop_toTopOf="@+id/quantityText" />
 
         <TextView
             android:id="@+id/caloriesText"

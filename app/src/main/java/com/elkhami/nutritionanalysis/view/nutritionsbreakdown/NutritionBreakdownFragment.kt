@@ -9,10 +9,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.elkhami.nutritionanalysis.R
 import com.elkhami.nutritionanalysis.databinding.FragmentNutritionBreakdownBinding
+import com.elkhami.nutritionanalysis.other.Constants.LINEAR_LAYOUT_RECYCLER_VIEW_SPAN
 import com.elkhami.nutritionanalysis.other.Constants.NETWORK_ERROR
 import com.elkhami.nutritionanalysis.other.Constants.UNKNOWN_ERROR
+import com.elkhami.nutritionanalysis.other.MarginItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -38,7 +41,6 @@ class NutritionBreakdownFragment : Fragment() {
             container,
             false
         )
-        binding.viewModel = viewModel
         return binding.root
     }
 
@@ -53,6 +55,12 @@ class NutritionBreakdownFragment : Fragment() {
             val adapter = NutritionBreakdownAdapter()
             adapter.submitList(it)
             binding.adapter = adapter
+            binding.nutritionRecyclerView.addItemDecoration(
+                MarginItemDecoration(
+                    resources.getDimensionPixelSize(R.dimen.recycler_item_margin),
+                    LINEAR_LAYOUT_RECYCLER_VIEW_SPAN, LinearLayoutManager.VERTICAL
+                )
+            )
         })
 
         viewModel.errorMessageType.observe(viewLifecycleOwner, {

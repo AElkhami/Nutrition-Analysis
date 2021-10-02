@@ -28,7 +28,11 @@ object NutritionFactsStub {
             VITARAE("", 0.0, ""),
             VITB12("", 0.0, ""),
             VITB6A("", 0.0, ""),
-            VITC("", 0.0, "")
+            VITC("", 0.0, ""),
+            VITD("",0.0,""),
+            TOCPHA("",0.0,""),
+            VITK1("",0.0,""),
+
         ),
         0,
         0

@@ -25,5 +25,20 @@
             app:nullable="true"
             android:defaultValue="@null"
             />
+        <action
+            android:id="@+id/action_nutritionBreakdownFragment_to_totalNutritionFactsFragment"
+            app:destination="@id/totalNutritionFactsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/totalNutritionFactsFragment"
+        android:name="com.elkhami.nutritionanalysis.view.totalnutritionfacts.TotalNutritionFactsFragment"
+        android:label="TotalNutritionFactsFragment"
+        tools:layout="@layout/fragment_total_nutrition_facts">
+        <argument
+            android:name="ingredientList"
+            app:argType="string[]"
+            app:nullable="true"
+            android:defaultValue="@null"
+            />
     </fragment>
 </navigation>

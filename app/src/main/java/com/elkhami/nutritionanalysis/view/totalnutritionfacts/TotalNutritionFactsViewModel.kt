@@ -29,12 +29,15 @@ class TotalNutritionFactsViewModel @Inject constructor(
     private var _errorMessageType = MutableLiveData<String>()
     val errorMessageType: LiveData<String> = _errorMessageType
 
+    var isDataRetrieved = false
+
     fun getTotalNutritionalFacts(ingredientsList: List<String>) {
 
-        val request = IngredientsRequest(ingredientsList)
+        if (!isDataRetrieved) {
+            val request = IngredientsRequest(ingredientsList)
 
-        viewModelScope.launch {
-            val response = repository.getTotalDailyNutrition(request)
+            viewModelScope.launch {
+                val response = repository.getTotalDailyNutrition(request)
 
                 when (response.status) {
                     Status.SUCCESS -> {
@@ -57,3 +60,4 @@ class TotalNutritionFactsViewModel @Inject constructor(
             }
         }
     }
+}

@@ -59,6 +59,8 @@ class TotalNutritionFactsFragment : Fragment() {
                     Constants.LINEAR_LAYOUT_RECYCLER_VIEW_SPAN, LinearLayoutManager.VERTICAL
                 )
             )
+
+            viewModel.isDataRetrieved = true
         })
 
         viewModel.errorMessageType.observe(viewLifecycleOwner, {

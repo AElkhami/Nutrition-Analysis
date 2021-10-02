@@ -1,6 +1,7 @@
 package com.elkhami.nutritionanalysis.data.repository
 
 import com.elkhami.nutritionanalysis.data.model.IngredientsRequest
+import com.elkhami.nutritionanalysis.data.model.Nutrient
 import com.elkhami.nutritionanalysis.data.model.NutritionalFactsResponse
 import com.elkhami.nutritionanalysis.other.Resource
 import kotlinx.coroutines.flow.Flow
@@ -17,6 +18,6 @@ interface Repository {
 
     fun processIngredientDetails(ingr: String): Triple<String, Int, String>
 
-    suspend fun getNutritionForList(request: IngredientsRequest)
-            : Resource<NutritionalFactsResponse>
+    suspend fun getTotalDailyNutrition(request: IngredientsRequest)
+            : Resource<ArrayList<Nutrient>>
 }

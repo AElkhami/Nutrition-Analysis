@@ -1,20 +1,19 @@
 package com.elkhami.nutritionanalysis.data.repository
 
 import com.elkhami.nutritionanalysis.data.model.IngredientsRequest
+import com.elkhami.nutritionanalysis.data.model.Nutrient
 import com.elkhami.nutritionanalysis.data.model.NutritionalFactsResponse
 import com.elkhami.nutritionanalysis.data.stub.NutritionFactsStub
+import com.elkhami.nutritionanalysis.data.stub.NutritionFactsStub.totalNutrientsStub
 import com.elkhami.nutritionanalysis.other.Constants.NETWORK_ERROR
 import com.elkhami.nutritionanalysis.other.Constants.UNKNOWN_ERROR
 import com.elkhami.nutritionanalysis.other.Resource
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 /**
  * Created by A.Elkhami on 27,September,2021
  */
-private const val WAIT_TIME = 2000L
-
 class TestRepository : Repository {
 
     private var shouldReturnNetworkError = false
@@ -24,7 +23,7 @@ class TestRepository : Repository {
 
     override suspend fun getNutritionForItem(ingr: String)
             : Resource<NutritionalFactsResponse> {
-        return if (shouldReturnNetworkError) {
+        return if (!shouldReturnNetworkError) {
             if (isResponseSuccessful) {
                 Resource.Success(stub.nutritionalFactsStub)
             } else {
@@ -53,12 +52,11 @@ class TestRepository : Repository {
         return Triple("carrot", 50, "g")
     }
 
-
-    override suspend fun getNutritionForList(request: IngredientsRequest)
-            : Resource<NutritionalFactsResponse> {
-        return if (shouldReturnNetworkError) {
+    override suspend fun getTotalDailyNutrition(request: IngredientsRequest)
+            : Resource<ArrayList<Nutrient>> {
+        return if (!shouldReturnNetworkError) {
             if (isResponseSuccessful) {
-                Resource.Success(stub.nutritionalFactsStub)
+                Resource.Success(totalNutrientsStub.getTotalNutrientsList())
             } else {
                 Resource.Fail(errorMessage = UNKNOWN_ERROR)
             }

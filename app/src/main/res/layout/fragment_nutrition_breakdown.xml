@@ -23,7 +23,7 @@
             android:adapter="@{adapter}"
             android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/analyseButton"
+            app:layout_constraintBottom_toTopOf="@+id/getTotalNutritionButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -32,7 +32,7 @@
             tools:visibility="visible" />
 
         <Button
-            android:id="@+id/analyseButton"
+            android:id="@+id/getTotalNutritionButton"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_margin"

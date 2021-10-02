@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.elkhami.nutritionanalysis.R
@@ -87,16 +88,28 @@ class NutritionBreakdownFragment : Fragment() {
             }
         })
 
+        binding.getTotalNutritionButton.setOnClickListener {
+            val bundle = Bundle().apply {
+                putStringArray("ingredientList", ingredientList.toTypedArray())
+            }
+            findNavController()
+                .navigate(
+                    R.id.action_nutritionBreakdownFragment_to_totalNutritionFactsFragment,
+                    bundle)
+
+            viewModel.navigationComplete()
+        }
+
     }
 
     private fun startLoading() {
-        binding.analyseButton.visibility = View.GONE
+        binding.getTotalNutritionButton.visibility = View.GONE
         binding.nutritionRecyclerView.visibility = View.GONE
         binding.loadingProgressBar.visibility = View.VISIBLE
     }
 
     private fun stopLoading() {
-        binding.analyseButton.visibility = View.VISIBLE
+        binding.getTotalNutritionButton.visibility = View.VISIBLE
         binding.nutritionRecyclerView.visibility = View.VISIBLE
         binding.loadingProgressBar.visibility = View.GONE
     }

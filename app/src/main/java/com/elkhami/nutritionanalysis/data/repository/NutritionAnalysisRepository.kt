@@ -2,6 +2,7 @@ package com.elkhami.nutritionanalysis.data.repository
 
 import androidx.core.text.isDigitsOnly
 import com.elkhami.nutritionanalysis.data.model.IngredientsRequest
+import com.elkhami.nutritionanalysis.data.model.Nutrient
 import com.elkhami.nutritionanalysis.data.model.NutritionalFactsResponse
 import com.elkhami.nutritionanalysis.data.remote.NutritionAnalysisAPI
 import com.elkhami.nutritionanalysis.other.Constants.MAX_CONCURRENT_REQUESTS
@@ -91,8 +92,8 @@ class NutritionAnalysisRepository @Inject constructor(
         return Triple(foodName, weight, unit)
     }
 
-    override suspend fun getNutritionForList(request: IngredientsRequest)
-            : Resource<NutritionalFactsResponse> {
+    override suspend fun getTotalDailyNutrition(request: IngredientsRequest)
+            : Resource<ArrayList<Nutrient>> {
 
         return try {
             Resource.Loading<NutritionalFactsResponse>()
@@ -101,7 +102,7 @@ class NutritionAnalysisRepository @Inject constructor(
 
             if (response.isSuccessful) {
                 response.body()?.let {
-                    return@let Resource.Success(it)
+                    return@let Resource.Success(it.totalNutrients.getTotalNutrientsList())
                 } ?: Resource.Fail(errorMessage = UNKNOWN_ERROR)
             } else {
                 return Resource.Fail(errorMessage = response.message())

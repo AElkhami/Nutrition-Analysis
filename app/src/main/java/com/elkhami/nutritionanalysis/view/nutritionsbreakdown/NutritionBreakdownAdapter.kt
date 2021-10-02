@@ -51,7 +51,6 @@ class DiffCallback : DiffUtil.ItemCallback<NutritionalFactsResponse>() {
         return oldItem.uri == newItem.uri
     }
 
-
     override fun areContentsTheSame(
         oldItem: NutritionalFactsResponse,
         newItem: NutritionalFactsResponse

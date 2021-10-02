@@ -57,4 +57,8 @@ class NutritionBreakdownViewModel @Inject constructor(
         }
     }
 
+    fun navigationComplete() {
+        _nutritionBreakdownList.value = null
+    }
+
 }

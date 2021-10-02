@@ -19,4 +19,36 @@ data class TotalNutrients(
     val VITD: VITD,
     val TOCPHA: TOCPHA,
     val VITK1: VITK1
-)
+){
+    fun getTotalNutrientsList()
+    : ArrayList<Nutrient>{
+        val nutrientsList = ArrayList<Nutrient>()
+
+        nutrientsList.add(mapNutrient(CA))
+        nutrientsList.add(mapNutrient(CHOCDF))
+        nutrientsList.add(mapNutrient(CHOLE))
+        nutrientsList.add(mapNutrient(ENERC_KCAL))
+        nutrientsList.add(mapNutrient(FAT))
+        nutrientsList.add(mapNutrient(FE))
+        nutrientsList.add(mapNutrient(NA))
+        nutrientsList.add(mapNutrient(CA))
+        nutrientsList.add(mapNutrient(PROCNT))
+        nutrientsList.add(mapNutrient(VITA_RAE))
+        nutrientsList.add(mapNutrient(VITB12))
+        nutrientsList.add(mapNutrient(VITB6A))
+        nutrientsList.add(mapNutrient(VITC))
+        nutrientsList.add(mapNutrient(VITD))
+        nutrientsList.add(mapNutrient(TOCPHA))
+        nutrientsList.add(mapNutrient(VITK1))
+
+        return nutrientsList
+    }
+
+    private fun mapNutrient(nutrient: Nutrient): Nutrient{
+        val newNutrient = Nutrient()
+        newNutrient.label = nutrient.label
+        newNutrient.unit = nutrient.unit
+        newNutrient.quantity = nutrient.quantity
+        return newNutrient
+    }
+}

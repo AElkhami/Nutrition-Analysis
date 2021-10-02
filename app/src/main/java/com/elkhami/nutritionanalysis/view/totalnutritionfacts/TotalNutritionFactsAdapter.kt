@@ -1,5 +1,6 @@
 package com.elkhami.nutritionanalysis.view.totalnutritionfacts
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -51,7 +52,7 @@ class DiffCallback : DiffUtil.ItemCallback<Nutrient>() {
         return oldItem.label == newItem.label
     }
 
-
+    @SuppressLint("DiffUtilEquals")
     override fun areContentsTheSame(
         oldItem: Nutrient,
         newItem: Nutrient

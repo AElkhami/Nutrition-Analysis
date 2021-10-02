@@ -8,14 +8,15 @@ Model View View-Model (MVVM)
 
 ## Used Libraries
 
-Data binding
-Navigation component
-Hilt
-Coroutines
-Flow
-Retrofit
-okHTTP
-jUnit4
+* Kotlin
+* Data binding
+* Navigation component
+* Hilt
+* Coroutines
+* Flow
+* Retrofit
+* okHTTP
+* jUnit4
 
 ## Used API 
 

@@ -15,7 +15,7 @@ Model View View-Model (MVVM)
 * Coroutines
 * Flow
 * Retrofit
-* okHTTP
+* OkHttp
 * jUnit4
 
 ## Used API 

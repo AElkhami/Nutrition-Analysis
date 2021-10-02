@@ -31,33 +31,40 @@ class NutritionBreakdownViewModel @Inject constructor(
 
     private val responseList: ArrayList<NutritionalFactsResponse> = ArrayList()
 
-    fun getNutritionalDataForIngredients(ingredientsList: List<String>) {
-        viewModelScope.launch {
-            repository.processAllNutritionRequests(ingredientsList).collect {
-                when (it.status) {
-                    Status.SUCCESS -> {
-                        it.data?.let { nutritionFactsResponse ->
-                            responseList.add(nutritionFactsResponse)
-                            _nutritionBreakdownList.value = responseList
-                        }
-                        _loadingState.value = false
-                    }
-                    Status.FAILED -> {
-                        _loadingState.value = false
+    var isDataRetrieved = false
 
-                        it.errorMessage?.let { errorMessage ->
-                            _errorMessageType.value = errorMessage
+    fun getNutritionalDataForIngredients(ingredientsList: List<String>) {
+        if(!isDataRetrieved){
+            viewModelScope.launch {
+                repository.processAllNutritionRequests(ingredientsList).collect {
+                    when (it.status) {
+                        Status.SUCCESS -> {
+                            it.data?.let { nutritionFactsResponse ->
+                                responseList.add(nutritionFactsResponse)
+                                _nutritionBreakdownList.value = responseList
+                            }
+                            _loadingState.value = false
                         }
-                    }
-                    Status.LOADING -> {
-                        _loadingState.value = true
+                        Status.FAILED -> {
+                            _loadingState.value = false
+
+                            it.errorMessage?.let { errorMessage ->
+                                _errorMessageType.value = errorMessage
+                            }
+                        }
+                        Status.LOADING -> {
+                            _loadingState.value = true
+                        }
                     }
                 }
             }
         }
+        //to retain response list when coming back from the next fragment
+        _nutritionBreakdownList.value = responseList
     }
 
     fun navigationComplete() {
+        //remove data from livedata to be able to navigate back from the next fragment
         _nutritionBreakdownList.value = null
     }
 

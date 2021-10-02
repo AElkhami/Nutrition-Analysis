@@ -54,14 +54,18 @@ class NutritionBreakdownFragment : Fragment() {
 
         viewModel.nutritionBreakdownList.observe(viewLifecycleOwner, {
             val adapter = NutritionBreakdownAdapter()
-            adapter.submitList(it)
-            binding.adapter = adapter
-            binding.nutritionRecyclerView.addItemDecoration(
-                MarginItemDecoration(
-                    resources.getDimensionPixelSize(R.dimen.recycler_item_margin),
-                    LINEAR_LAYOUT_RECYCLER_VIEW_SPAN, LinearLayoutManager.VERTICAL
+            it?.let {
+                adapter.submitList(it)
+                binding.adapter = adapter
+                binding.nutritionRecyclerView.addItemDecoration(
+                    MarginItemDecoration(
+                        resources.getDimensionPixelSize(R.dimen.recycler_item_margin),
+                        LINEAR_LAYOUT_RECYCLER_VIEW_SPAN, LinearLayoutManager.VERTICAL
+                    )
                 )
-            )
+
+                viewModel.isDataRetrieved = true
+            }
         })
 
         viewModel.errorMessageType.observe(viewLifecycleOwner, {

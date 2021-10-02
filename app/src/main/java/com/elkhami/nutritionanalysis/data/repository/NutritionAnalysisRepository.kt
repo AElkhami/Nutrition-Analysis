@@ -5,6 +5,8 @@ import com.elkhami.nutritionanalysis.data.model.IngredientsRequest
 import com.elkhami.nutritionanalysis.data.model.Nutrient
 import com.elkhami.nutritionanalysis.data.model.NutritionalFactsResponse
 import com.elkhami.nutritionanalysis.data.remote.NutritionAnalysisAPI
+import com.elkhami.nutritionanalysis.other.Constants.LOW_QUALITY_ERROR
+import com.elkhami.nutritionanalysis.other.Constants.LOW_QUALITY_ERROR_555
 import com.elkhami.nutritionanalysis.other.Constants.MAX_CONCURRENT_REQUESTS
 import com.elkhami.nutritionanalysis.other.Constants.NETWORK_ERROR
 import com.elkhami.nutritionanalysis.other.Constants.UNKNOWN_ERROR
@@ -105,7 +107,11 @@ class NutritionAnalysisRepository @Inject constructor(
                     return@let Resource.Success(it.totalNutrients.getTotalNutrientsList())
                 } ?: Resource.Fail(errorMessage = UNKNOWN_ERROR)
             } else {
-                return Resource.Fail(errorMessage = response.message())
+                return if(response.code() == LOW_QUALITY_ERROR_555){
+                    Resource.Fail(errorMessage = LOW_QUALITY_ERROR)
+                }else {
+                    Resource.Fail(errorMessage = response.message())
+                }
             }
 
         } catch (e: Exception) {

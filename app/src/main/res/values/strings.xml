@@ -12,4 +12,5 @@
     <string name="one_digit">1</string>
     <string name="unknown_error_message">Something went wrong please try again later.</string>
     <string name="network_error_message">Couldn\'t reach server please check your internet.</string>
+    <string name="low_quality_error_message">Please make sure you entered ingredient correctly.</string>
 </resources>

@@ -23,7 +23,16 @@ class IngredientSearchViewModel : ViewModel() {
 
     fun convertIngredientsInputToList(ingredients: String) {
 
-        val ingredientList = ingredients.split("\n")
+        val ingredientList = ingredients.split("\n") as MutableList
+
+        //remove any empty lines
+        val iterator = ingredientList.iterator()
+        while (iterator.hasNext()) {
+            val ingredient = iterator.next()
+            if (ingredient == "") {
+                iterator.remove()
+            }
+        }
 
         _ingredientsList.value = ingredientList
     }

@@ -70,6 +70,9 @@ class TotalNutritionFactsFragment : Fragment() {
                 Constants.NETWORK_ERROR -> {
                     getString(R.string.network_error_message)
                 }
+                Constants.LOW_QUALITY_ERROR ->{
+                    getString(R.string.low_quality_error_message)
+                }
                 else -> {
                     it
                 }

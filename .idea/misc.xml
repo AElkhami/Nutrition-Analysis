@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/NutritionAnalysis/app/src/main/res/drawable/ic_carrot.xml" value="0.19895833333333332" />
         <entry key="..\:/AndroidStudioProjects/NutritionAnalysis/app/src/main/res/drawable/rounded_corners_white_4dp_bg.xml" value="0.35625" />
         <entry key="..\:/AndroidStudioProjects/NutritionAnalysis/app/src/main/res/layout/activity_main.xml" value="0.289922480620155" />
         <entry key="..\:/AndroidStudioProjects/NutritionAnalysis/app/src/main/res/layout/fragment_ingredient_search.xml" value="0.37819025522041766" />

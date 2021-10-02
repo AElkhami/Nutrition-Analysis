@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/ingredientSearchFragment"
         android:name="com.elkhami.nutritionanalysis.view.ingredientsearch.IngredientSearchFragment"
-        android:label="IngredientSearchFragment"
+        android:label="Ingredient Search"
         tools:layout="@layout/fragment_ingredient_search">
         <action
             android:id="@+id/action_ingredientSearchFragment_to_nutritionBreakdownFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/nutritionBreakdownFragment"
         android:name="com.elkhami.nutritionanalysis.view.nutritionsbreakdown.NutritionBreakdownFragment"
-        android:label="NutritionBreakdownFragment"
+        android:label="Nutrition Breakdown Analysis"
         tools:layout="@layout/fragment_nutrition_breakdown">
         <argument
             android:name="ingredientList"
@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/totalNutritionFactsFragment"
         android:name="com.elkhami.nutritionanalysis.view.totalnutritionfacts.TotalNutritionFactsFragment"
-        android:label="TotalNutritionFactsFragment"
+        android:label="Total Nutrition Facts"
         tools:layout="@layout/fragment_total_nutrition_facts">
         <argument
             android:name="ingredientList"

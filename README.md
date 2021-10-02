@@ -1,3 +1,7 @@
+## Note
+
+For security reasons the BASE_URL, APP_ID and APP_KEY are on local.properties file which is execluded from git.
+
 ## Description
 
 Nutrition Analysis is an application designed to analyze any recipe and get a detailed nutrition data about it.

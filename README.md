@@ -6,7 +6,7 @@ Nutrition Analysis is an application designed to analyze any recipe and get a de
 
 Model View View-Model (MVVM)
 
-## Used Libraries
+## Used Technologies
 
 * Kotlin
 * Data binding

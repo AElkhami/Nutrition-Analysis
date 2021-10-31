@@ -1,6 +1,7 @@
 ## Note
 
-For security reasons the BASE_URL, APP_ID and APP_KEY are on local.properties file which is execluded from git.
+For security reasons the BASE_URL, APP_ID and APP_KEY are on local.properties file which is execluded from gitl,
+please include the BASE_URL by yourself and use your own APP_ID and APP_KEY.
 
 ## Description
 
